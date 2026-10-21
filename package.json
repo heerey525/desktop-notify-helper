@@ -1,0 +1,14 @@
+{
+  "name": "desktop-notify-helper",
+  "productName": "桌面通知助手",
+  "version": "1.0.0",
+  "private": true,
+  "description": "定时桌面通知助手：精确到秒的提醒、自定义标题正文、系统级弹窗与提示音",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^40.10.2"
+  }
+}

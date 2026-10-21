@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'" />
+    <title>提醒</title>
+    <link rel="stylesheet" href="notify.css" />
+  </head>
+  <body class="notify">
+    <div class="card">
+      <div class="accent"></div>
+      <header class="card-head">
+        <span class="badge"><span class="pulse"></span>桌面提醒</span>
+        <span id="due" class="due"></span>
+      </header>
+      <h2 id="title" class="title"></h2>
+      <p id="body" class="body"></p>
+      <footer class="card-foot">
+        <span id="timer" class="timer">保持显示，直到手动关闭</span>
+        <div class="buttons">
+          <button id="close" class="btn primary" type="button">关闭</button>
+        </div>
+      </footer>
+    </div>
+    <script src="sound.js"></script>
+    <script src="notify.js"></script>
+  </body>
+</html>

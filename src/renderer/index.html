@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'" />
+    <title>桌面通知助手</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo"></span>
+        <div>
+          <h1>桌面通知助手</h1>
+          <p>定时到点 · 系统级弹窗 · 提示音</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <span id="sysState" class="tag muted">横幅授权待确认</span>
+        <button id="btnQuit" class="btn ghost" type="button">退出应用</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel form-panel">
+        <h2 id="formTitle">新建通知</h2>
+
+        <div class="field">
+          <span class="label">提醒时间（精确到秒）</span>
+          <div class="datetime">
+            <input id="fDate" type="date" aria-label="日期" />
+            <input id="fTime" type="time" step="1" aria-label="时间" />
+          </div>
+          <div class="chips">
+            <button type="button" class="chip" data-offset="60">1 分钟后</button>
+            <button type="button" class="chip" data-offset="300">5 分钟后</button>
+            <button type="button" class="chip" data-offset="3600">1 小时后</button>
+            <button type="button" class="chip" data-tomorrow="9">明天 09:00</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="fTitle">通知标题</label>
+          <input id="fTitle" type="text" maxlength="60" placeholder="例：周会开始" />
+        </div>
+
+        <div class="field">
+          <label class="label" for="fBody">正文内容</label>
+          <textarea id="fBody" rows="4" maxlength="500" placeholder="例：3 号会议室，带上上周数据"></textarea>
+        </div>
+
+        <div class="field-grid">
+          <div class="field">
+            <label class="label" for="fSound">提示音</label>
+            <select id="fSound">
+              <option value="ding">叮 · 清脆双音</option>
+              <option value="chime">铃 · 上行琶音</option>
+              <option value="bell">钟 · 长余韵</option>
+              <option value="buzz">蜂鸣 · 三声警报</option>
+              <option value="none">静音</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="label" for="fDuration">展示时长（秒）</label>
+            <input id="fDuration" type="number" min="0" max="86400" step="1" value="60" />
+            <span class="hint">0 表示常驻，直到手动关闭</span>
+          </div>
+        </div>
+
+        <p id="formError" class="error" role="alert"></p>
+
+        <div class="form-actions">
+          <button id="btnSave" class="btn primary" type="button">保存任务</button>
+          <button id="btnReset" class="btn ghost" type="button">清空</button>
+        </div>
+        <button id="btnPreview" class="btn text" type="button">按当前内容试弹一次（含提示音）</button>
+      </section>
+
+      <section class="panel list-panel">
+        <div class="list-head">
+          <h2>通知任务 <span id="counts" class="counts"></span></h2>
+          <button id="btnClear" class="btn small ghost" type="button">清除已提醒</button>
+        </div>
+        <div id="rows" class="rows"></div>
+        <div id="empty" class="empty">还没有任务。设置时间、填写标题与正文，点「保存任务」即可。</div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
